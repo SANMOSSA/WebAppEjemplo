@@ -75,14 +75,24 @@
       var Mult = document.getElementById('Mult');
       var Dividir = document.getElementById('Dividir');
 
+
       Suma.addEventListener('click', function() {
+        if (num1.value === '' || num2.value === '') {
+          resultado.textContent = 'Resultado: 0';
+          return;
+        }
         var n1 = parseInt(num1.value);
         var n2 = parseInt(num2.value);
+        console.log(n1, n2);
         var r = n1 + n2;
         resultado.textContent = 'Resultado: ' + r.toString();
       });
 
       Resta.addEventListener('click', function() {
+        if (num1.value === '' || num2.value === '') {
+          resultado.textContent = 'Resultado: 0';
+          return;
+        }
         var n1 = parseInt(num1.value);
         var n2 = parseInt(num2.value);
         var r = n1 - n2;
@@ -90,6 +100,10 @@
       });
 
       Mult.addEventListener('click', function() {
+        if (num1.value === '' || num2.value === '') {
+          resultado.textContent = 'Resultado: 0';
+          return;
+        }
         var n1 = parseInt(num1.value);
         var n2 = parseInt(num2.value);
         var r = n1 * n2;
@@ -97,6 +111,10 @@
       });
 
       Dividir.addEventListener('click', function() {
+        if (num1.value === '' || num2.value === '') {
+          resultado.textContent = 'Resultado: 0';
+          return;
+        }
         var n1 = parseInt(num1.value);
         var n2 = parseInt(num2.value);
         var r = n1 / n2;
