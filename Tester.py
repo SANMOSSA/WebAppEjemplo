@@ -6,11 +6,9 @@ def obtener_commits(repo_path):
     comandName = "git log --pretty=%s"
     resultDate = subprocess.run(commandDate, shell=True, capture_output=True, text=True).stdout.strip().split('\n')
     resultName = subprocess.run(comandName, shell=True, capture_output=True, text=True).stdout.strip().split('\n')
-    resultName.reverse()
-    resultDate.reverse()
     UltimoPago = resultName.index("Pago")
-    resultName = resultName[UltimoPago+1:]
-    resultDate = resultDate[UltimoPago+1:]
+    resultName = resultName[:UltimoPago]
+    resultDate = resultDate[:UltimoPago]
     resultDate.reverse()
     resultName.reverse()
     Tiempos = [[]]
