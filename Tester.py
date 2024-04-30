@@ -2,8 +2,8 @@ import subprocess
 from datetime import datetime, timedelta
 
 def obtener_commits(repo_path):
-    commandDate = "git log --pretty='%ad'"
-    comandName = "git log --pretty='%s'"
+    commandDate = "git log --pretty=%ad"
+    comandName = "git log --pretty=%s"
     resultDate = subprocess.run(commandDate, shell=True, capture_output=True, text=True).stdout.strip().split('\n')
     resultName = subprocess.run(comandName, shell=True, capture_output=True, text=True).stdout.strip().split('\n')
     resultName.reverse()
