@@ -26,6 +26,7 @@ def obtener_commits(repo_path):
     
     if Tiempos[-1] == []:
         Tiempos.pop(-1)
+        
     return Tiempos
 
 def main(repo_path, commit_referencia):
