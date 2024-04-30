@@ -7,11 +7,29 @@ def obtener_commits(repo_path):
     resultDate = subprocess.run(commandDate, shell=True, capture_output=True, text=True).stdout.strip().split('\n')
     resultName = subprocess.run(comandName, shell=True, capture_output=True, text=True).stdout.strip().split('\n')
     resultName.reverse()
-    UltimoPago = resultName.index("Pago")
-    resultName = resultName[UltimoPago:]
     resultDate.reverse()
+    UltimoPago = resultName.index("Pago")
+    resultName = resultName[UltimoPago+1:]
+    resultDate = resultDate[UltimoPago+1:]
+    resultDate.reverse()
+    resultName.reverse()
+    Tiempos = [[]]
+    for i, Name, Date in zip(range(len(resultName)), resultName, resultDate):
+        print(i, Name, Date)
+        if Name.lower() in ["inicio", "fin"]:
+            if Name.lower() == "inicio":
+                Tiempos[-1].append(Date)
+            else:
+                Tiempos[-1].append(Date)
+                Tiempos.append([])
+        else:
+            resultDate.pop(i)
+            resultName.pop(i)
+    
+    if Tiempos[-1] == []:
+        Tiempos.pop(-1)
 
-    return [commit.split('|') for commit in commits]
+    return Tiempos
 
 def main(repo_path, commit_referencia):
     commits = obtener_commits(repo_path)
